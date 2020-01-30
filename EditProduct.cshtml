@@ -1,0 +1,37 @@
+﻿@model MvcTest.Models.Product
+
+@{
+    ViewBag.Title = "InsertProduct";
+}
+
+@using (Html.BeginForm())
+{
+    <div class="form-horizontal">
+        <h4>Category</h4>
+        <hr />
+        @Html.HiddenFor(Model => Model.ProductId, new { ProductId = "ProductId" })
+        <div class="form-group">
+            @Html.Label("Category", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">                
+                @Html.DropDownListFor(model => model.CategoryId, (IEnumerable<SelectListItem>)ViewBag.category, "--Select Category--")
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.Label("Product Name", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.ProductName, new { htmlAttributes = new { @class = "form-control" } })
+
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="button" value="Update" onclick="update()" class="btn btn-default" />
+            </div>
+            <div>
+                @Html.ActionLink("Product List", "ListOfProduct")
+            </div>
+        </div>
+    </div>
+}
+<script src="~/Javascript file/Product.js"></script>
